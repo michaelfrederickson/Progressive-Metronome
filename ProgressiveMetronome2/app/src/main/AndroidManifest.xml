@@ -22,7 +22,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="org.michaelfrederickson.progressivemetronome.MetronomeActivity"
+            android:name="com.github.michaelfredeickson.progressivemetronome.MetronomeActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
@@ -33,15 +33,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="org.michaelfrederickson.progressivemetronome.IncrementorActivity"
+            android:name="com.github.michaelfredeickson.progressivemetronome.IncrementorActivity"
             android:label="@string/title_activity_incrementor" >
         </activity>
         <activity
-            android:name="org.michaelfrederickson.progressivemetronome.SelectCountinActivity"
+            android:name="com.github.michaelfredeickson.progressivemetronome.SelectCountinActivity"
             android:label="@string/title_activity_countin" >
         </activity>
         <activity
-            android:name="org.michaelfrederickson.progressivemetronome.PlayIncrementedSectionActivity"
+            android:name="com.github.michaelfredeickson.progressivemetronome.PlayIncrementedSectionActivity"
             android:label="@string/title_activity_play_incremented_section" >
         </activity>
     </application>
