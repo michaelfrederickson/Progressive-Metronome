@@ -1,0 +1,212 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MetronomeActivity" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:background="#ff000000"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="35px"
+            android:textColor="#FFFFFF"
+            android:text="@string/starting_tempo"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="35px"
+            android:textColor="#FFFFFF"
+            android:id="@+id/starting_tempo"
+            android:layout_marginLeft="10dp" />
+
+        <SeekBar
+            android:id="@+id/starting_tempo_slider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10px"/>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_marginTop="10px"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="35px"
+                android:textColor="#FFFFFF"
+                android:text="@string/ending_tempo"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="35px"
+                android:textColor="#FFFFFF"
+                android:id="@+id/ending_tempo"
+                android:layout_marginLeft="10dp" />
+
+            <SeekBar
+                android:id="@+id/ending_tempo_slider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10px"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:layout_weight="0.59"
+            android:layout_marginTop="0dp"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/beats_per_measure"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:text="@string/time_signature"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="5dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0px"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+
+                <ImageView
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:src="@drawable/right_arrow"
+                    android:onClick="downMeasure" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textSize="40px"
+                    android:layout_marginLeft="20px"
+                    android:textColor="#FFFFFF"
+                    android:id="@+id/measure"
+                    android:text="4"/>
+
+                <ImageView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="20px"
+                    android:src="@drawable/left_arrow"
+                    android:onClick="upMeasure" />
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/number_of_measures_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30px"
+                android:textSize="15dp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:text="@string/number_of_measures"
+                android:layout_gravity="left"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="2dp"/>
+
+            <EditText
+                android:id="@+id/number_of_measures_edit_text"
+                android:layout_width="100dp"
+                android:layout_height="36dp"
+                android:inputType="number"
+                android:ems="10"
+                android:layout_gravity="right"
+                android:hint="8"/>
+
+            <TextView
+                android:id="@+id/amount_of_increase_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30px"
+                android:textSize="15dp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:text="@string/amount_of_increase"
+                android:layout_gravity="left"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="2dp"/>
+
+            <EditText
+                android:layout_width="100dp"
+                android:layout_height="36dp"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/tempo_increase_edit_text"
+                android:layout_gravity="right"
+                android:hint="5"/>
+
+            <TextView
+                android:id="@+id/repetitions_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30px"
+                android:textSize="15dp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:text="@string/repetitions"
+                android:layout_gravity="left"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="2dp"
+                />
+
+            <EditText
+                android:layout_width="100dp"
+                android:layout_height="36dp"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/number_of_repetitions_edit_text"
+                android:layout_gravity="right"
+                android:hint="4"/>/>
+
+            <Button
+                android:id="@+id/increment"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30px"
+                android:background="@drawable/button"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:text="@string/start"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="0dp"
+                android:onClick="start"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

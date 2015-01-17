@@ -1,3 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ProgressiveMetronome</string>
+
+    <string name="app_name">Progressive Metronome</string>
+    <string name="action_settings">Settings</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="tempo_marking">Tempo</string>
+    <string name="increment">Set Incrementer</string>
+    <string name="title_activity_incrementor">Progress Tempo</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="starting_tempo">Starting Tempo</string>
+    <string name="ending_tempo">Ending Tempo</string>
+    <string name="number_of_measures">Number of measures to practice</string>
+    <string name="amount_of_increase">Amount of tempo increase per repeat (in beats)</string>
+    <string name="count_in">Count-in/Delay before start</string>
+    <string name="repetitions">Number of repetitions at each tempo</string>
+    <string name="beats_per_measure">Beats per measure</string>
+    <string name="title_activity_countint">CountintActivity</string>
+    <string name="title_activity_countin">CountinActivity</string>
+    <string name="title_activity_play_incremented_section">PlayIncrementedSectionActivity</string>
+    <string name="count_in_prompt">Enter Count-in/Delay value in beats and press Start Increment Metronome</string>
+    <string name="start_increment">Start Increment Section</string>
+    <string name="time_signature">Time Signature (in quarter notes)</string>
+    <string name="start_increment_section">Start Increment Section</string>
+    <string name="stop_increment_section">Stop Increment Section</string>
+    <string name="countdown">Count Down</string>
+    <string name="start_countdown">Start CountDown</string>
+
 </resources>
