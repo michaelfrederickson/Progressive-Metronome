@@ -30,7 +30,7 @@
                 android:layout_height="36dp"
                 android:inputType="number"
                 android:ems="10"
-                android:id="@+id/countdown_edit_text"
+                android:id="@+id/countdown_hey"
                 android:layout_gravity="center_horizontal"
                 android:hint="0"
                 android:layout_marginTop="10dp"/>

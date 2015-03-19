@@ -1,0 +1,20 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.github.michaelfredeickson.progressivemetronome.SelectMetronomeTypeFragment"
+    android:background="#ff000000">
+
+    <!-- TODO: Update blank fragment layout -->
+    <Button
+        android:id="@+id/begin_practice_section_metronome_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="75dp"
+        android:layout_marginLeft="30px"
+        android:background="@drawable/button"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:text="@string/play_practice_section"/>
+
+</FrameLayout>
