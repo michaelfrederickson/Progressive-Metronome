@@ -2,12 +2,13 @@ package com.github.michaelfredeickson.progressivemetronome;
 
 import android.app.Activity;
 import android.content.Intent;
-import com.github.michaelfredeickson.progressivemetronome.R;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+
+import com.github.michaelfredeickson.progressivemetronome.practicesection.PracticeSectionController;
 
 import java.io.Serializable;
 
@@ -15,7 +16,7 @@ import java.io.Serializable;
 public class SelectCountinActivity extends Activity implements Serializable {
 
     PlayIncrementedSectionActivity playIncrementedSection;
-    IncrementorController ic;
+    PracticeSectionController practiceSectionController;
 
 
     @Override
@@ -23,7 +24,7 @@ public class SelectCountinActivity extends Activity implements Serializable {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selectcountin);
 
-        ic = (IncrementorController) getIntent().getSerializableExtra("incrementorController");
+        practiceSectionController = (PracticeSectionController) getIntent().getSerializableExtra("incrementorController");
 
     }
 
@@ -55,7 +56,7 @@ public class SelectCountinActivity extends Activity implements Serializable {
         setCountdown();
         playIncrementedSection = new PlayIncrementedSectionActivity(); //pass in arrayList to constructor, which adds count in and passes to SoundGenerator
         Intent intent = new Intent(this, PlayIncrementedSectionActivity.class);
-        intent.putExtra("ic", (Serializable) ic);
+        intent.putExtra("ic", (Serializable) practiceSectionController);
         startActivity(intent);
     }
 
@@ -64,11 +65,11 @@ public class SelectCountinActivity extends Activity implements Serializable {
         try {
             final EditText countdownEditText = (EditText) findViewById(R.id.countdown_edit_text);
             int countdown = Integer.parseInt(countdownEditText.getText().toString() + "");
-            ic.setCountdown(countdown);
+            practiceSectionController.setCountdown(countdown);
         }catch(Exception e){
             final EditText countdownEditText = (EditText) findViewById(R.id.countdown_edit_text);
             int countdown = Integer.parseInt(countdownEditText.getHint().toString() + "");
-            ic.setCountdown(countdown);
+            practiceSectionController.setCountdown(countdown);
         }
 
     }

@@ -1,7 +1,6 @@
 package com.github.michaelfredeickson.progressivemetronome;
 
 import android.app.Activity;
-import com.github.michaelfredeickson.progressivemetronome.R;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -9,12 +8,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.github.michaelfredeickson.progressivemetronome.metronome.ParseMetronome;
+import com.github.michaelfredeickson.progressivemetronome.practicesection.PracticeSectionController;
+
 import java.io.Serializable;
 
 
 public class PlayIncrementedSectionActivity extends Activity implements Serializable {
 
-    IncrementorController ic;
+    PracticeSectionController ic;
     ParseMetronome parseMetronome;
     private static TextView countDownTextView;
     private Button b;
@@ -28,7 +30,7 @@ public class PlayIncrementedSectionActivity extends Activity implements Serializ
 
         b = (Button) findViewById(R.id.stop_increment_button);
 
-        ic = (IncrementorController) getIntent().getSerializableExtra("ic");
+        ic = (PracticeSectionController) getIntent().getSerializableExtra("ic");
 
         b.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -65,7 +67,7 @@ public class PlayIncrementedSectionActivity extends Activity implements Serializ
 
         parseMetronome = new ParseMetronome(ic.getStartingTempo(), ic.getEndingTempo(), ic.getNumBeatsInMeasure(), ic.getNumMeasures(), ic.getIncreaseAmount(), ic.getRepetitionsAmount(), ic.getCountdown(), t);
         Countdown();
-        parseMetronome.begin();
+        parseMetronome.beginMetronome();
 
 
     }
@@ -75,7 +77,7 @@ public class PlayIncrementedSectionActivity extends Activity implements Serializ
 
         parseMetronome = new ParseMetronome(ic.getStartingTempo(), ic.getEndingTempo(), ic.getNumBeatsInMeasure(), ic.getNumMeasures(), ic.getIncreaseAmount(), ic.getRepetitionsAmount(), ic.getCountdown(), t);
         Countdown();
-        parseMetronome.begin();
+        parseMetronome.beginMetronome();
 
 
     }
@@ -92,7 +94,7 @@ public class PlayIncrementedSectionActivity extends Activity implements Serializ
 
     public void StopIncrementSection(View view){
 
-        parseMetronome.StopMetronome();
+        parseMetronome.stopMetronome();
 
     }
 

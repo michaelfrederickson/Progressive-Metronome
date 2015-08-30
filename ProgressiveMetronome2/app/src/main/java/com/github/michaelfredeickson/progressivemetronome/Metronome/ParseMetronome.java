@@ -1,7 +1,9 @@
-package com.github.michaelfredeickson.progressivemetronome;
+package com.github.michaelfredeickson.progressivemetronome.metronome;
 
 
 import android.app.Activity;
+
+import com.github.michaelfredeickson.progressivemetronome.LoopSection;
 import com.github.michaelfredeickson.progressivemetronome.R;
 import android.widget.TextView;
 
@@ -22,6 +24,13 @@ public class ParseMetronome extends Activity {
     int numSections;
     int countdown;
     Thread loopThread;
+    int timeSignatureNumerator;
+    int timeSignatureDenominator;
+    int subdivision;
+    int accent;
+    int [] timeSignature;
+    PlayMetronome playMetronome = null;
+    int tempo;
 
     public ParseMetronome(int startingTempo, int endingTempo, int numBeatsInMeasure, int numMeasures, int increase, int repetitions, int countdown, Thread loopThread) {
 
@@ -35,12 +44,30 @@ public class ParseMetronome extends Activity {
         this.loopThread = loopThread;
 
 
+
+
+
         CreateBpmList();
         numRepeats = CalculateNumRepeats();
         numSections = bpmList.length;
 
+        beginPracticeSection();
 
-        //thanksBen = new BensClass(CreateBpmList(), numBeatsInMeasure, bpmList.length, CalculateNumRepeats());
+
+
+    }
+
+    public ParseMetronome(int tempo, int[] timeSignature, int accent, int subdivision){
+
+
+        this.tempo = tempo;
+//        this.timeSignatureNumerator = timeSignature[0];
+//        this.timeSignatureDenominator = timeSignature[0];
+        this.timeSignature = timeSignature;
+        this.accent = accent;
+        this.subdivision = subdivision;
+        this.endingTempo = -1;
+        playMetronome = new PlayMetronome(tempo, timeSignature, accent, subdivision);
 
 
     }
@@ -61,12 +88,42 @@ public class ParseMetronome extends Activity {
 
     }
 
-    public void begin(){
-        loop = new LoopSection(bpmList, numBeatsInMeasure, numSections, numRepeats, countdown, loopThread);
+    public void beginMetronome(){
+
+        //        parseMetronome = new ParseMetronome(incrementMetronome.getStartingTempo(), incrementMetronome.getEndingTempo(), incrementMetronome.getNumBeatsInMeasure(), incrementMetronome.getPassageLength(), incrementMetronome.getIncrease(), incrementMetronome.getRepetitions(), incrementorMetronome.getCountdown());
+//        parseMetronome.Countdown();
+
+        updateMetronome();
+
+        if(!playMetronome.continueRunning){
+            playMetronome.beginMetronome();
+        }
     }
 
-    public void StopMetronome(){
-        loop.stop();
+    public void updateMetronome(){
+
+
+        playMetronome.tempo = this.tempo;
+        playMetronome.timeSignature = this.timeSignature;
+        playMetronome.accent = this.accent;
+        playMetronome.subdivision = this.subdivision;
+        playMetronome.numBeatsInMeasure = timeSignatureNumerator;
+
+
+    }
+
+    public void beginPracticeSection(){
+
+        if(endingTempo > 0) {
+            loop = new LoopSection(bpmList, numBeatsInMeasure, numSections, numRepeats, countdown, new Thread());
+        }else {
+
+        }
+
+    }
+
+    public void stopMetronome(){
+        playMetronome.stop();
     }
 
 //    public void play(){

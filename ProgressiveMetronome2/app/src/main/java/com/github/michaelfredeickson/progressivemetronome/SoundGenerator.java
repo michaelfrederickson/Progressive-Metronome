@@ -9,19 +9,22 @@ import java.util.TimerTask;
 public class SoundGenerator {
 
     private Timer timer;
-    private int measure;
+    private int timeSignatureNumerator;
+    private int timeSignatureDenominator;
     private int currentBeep = 1;
     private ToneGenerator beep;
     private ToneGenerator firstBeep;
     private int currentTotalBeeps = 1;
     private int totalBeeps;
+    private int subdivision;
 
 
-    public SoundGenerator(int tempo, int measure, ToneGenerator beep, ToneGenerator firstBeep) {
+    public SoundGenerator(int tempo, int [] measure, ToneGenerator beep, ToneGenerator firstBeep, int subidivion) {
 
         this.beep = beep;
         this.firstBeep = firstBeep;
-        this.measure = measure;
+        this.timeSignatureNumerator = measure[0];
+        this.subdivision = subidivion;
         timer = new Timer();
 
         TimerTask timerTask = new TimerTask() {
@@ -33,7 +36,7 @@ public class SoundGenerator {
                     if (currentBeep == 1) {
                         SoundGenerator.this.firstBeep.startTone(ToneGenerator.TONE_CDMA_ALERT_CALL_GUARD, 100);
                         currentBeep++;
-                    } else if (currentBeep == SoundGenerator.this.measure) {
+                    } else if (currentBeep == SoundGenerator.this.timeSignatureNumerator) {
                         SoundGenerator.this.beep.startTone(ToneGenerator.TONE_CDMA_ALERT_CALL_GUARD, 100);
                         currentBeep = 1;
                     } else {

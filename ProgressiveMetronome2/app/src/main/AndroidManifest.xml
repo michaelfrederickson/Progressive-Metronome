@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.github.michaelfredeickson.progressivemetronome"
     android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionName="1.0">
 
     <uses-sdk
         android:minSdkVersion="10"
@@ -11,7 +11,8 @@
     <android:uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="20" />
-    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <android:uses-permission
+        android:name="android.permission.READ_PHONE_STATE" />
     <android:uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="20" />
@@ -33,7 +34,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.github.michaelfredeickson.progressivemetronome.IncrementorActivity"
+            android:name="com.github.michaelfredeickson.progressivemetronome.practicesection.PracticeSectionActivity"
             android:label="@string/title_activity_incrementor" >
         </activity>
         <activity

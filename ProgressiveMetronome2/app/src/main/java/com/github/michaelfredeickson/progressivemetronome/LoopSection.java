@@ -57,7 +57,7 @@ public class LoopSection implements Runnable {
     @Override
     public void run() {
 
-
+        while(continueRunning){
 
         blinker = loopThread;
         int sectionNum = 1;
@@ -67,48 +67,54 @@ public class LoopSection implements Runnable {
         if (bpmList.length != numSections) {
             System.exit(1);
         }
-        while (sectionNum <= numSections && continueRunning && blinker == loopThread) {
+        while (sectionNum <= numSections && continueRunning) {
 
-                period = 60000/bpmList[bpmIndex];
+            period = 60000 / bpmList[bpmIndex];
 
-                for (int measureNumber = 1; measureNumber <= numRepeats; measureNumber++) {
-                    for (int beat = 1; beat <= numBeatsInMeasure; beat++) {
+            for (int measureNumber = 1; measureNumber <= numRepeats; measureNumber++) {
+                for (int beat = 1; beat <= numBeatsInMeasure; beat++) {
 
-                        previous = System.currentTimeMillis();
+                    previous = System.currentTimeMillis();
 
-                        if(!continueRunning || blinker != loopThread){
-                            break;
-                        }
-
-
-                            doBeep(beat);
-
-
-                        //check this many beats
-                        current = System.currentTimeMillis();
-                        dif = current - previous;
-                        left = period - dif;
-
-                        // Maybe for loop should be within try-catch?
-                        try {
-                            loopThread.sleep(left);
-                        } catch (InterruptedException iunno) {
-                            iunno.printStackTrace();
-                        }
-                    }
-
-                    if(!continueRunning || blinker != loopThread){
+                    if (!continueRunning || blinker != loopThread) {
                         break;
                     }
+
+
+                    doBeep(beat);
+
+
+                    //check this many beats
+                    current = System.currentTimeMillis();
+                    dif = current - previous;
+                    left = period - dif;
+
+                    // Maybe for loop should be within try-catch?
+                    try {
+                        loopThread.sleep(left);
+                    } catch (InterruptedException ie) {
+                        ie.printStackTrace();
+                    }
                 }
-                sectionNum++;
-                bpmIndex++;
+
+                if (!continueRunning || blinker != loopThread) {
+                    break;
+                }
+            }
+            sectionNum++;
+            bpmIndex++;
+
+            if (sectionNum >= numSections) {
+                continueRunning = false;
+            }
 
 //            if(!continueRunning){
 //
 //            }
 
-            }
+        }
+
+    }
 
     }
 }

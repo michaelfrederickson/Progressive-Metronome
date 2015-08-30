@@ -1,26 +1,28 @@
-package com.github.michaelfredeickson.progressivemetronome;
+package com.github.michaelfredeickson.progressivemetronome.practicesection;
+
+import com.github.michaelfredeickson.progressivemetronome.MetronomeActivity;
 
 import java.io.Serializable;
-import com.github.michaelfredeickson.progressivemetronome.IncrementorActivity;
-public class IncrementorController implements Serializable {
 
-    private IncrementorActivity IncrementorActivity;
-    private IncrementMetronome incrementMetronome;
+public class PracticeSectionController implements Serializable {
+
+    private PracticeSectionActivity IncrementorActivity;
+    private PracticeSectionMetronome incrementMetronome;
     private MetronomeActivity metronomeActivity;
 //    private SoundGenerator soundGenerator;
 //    private ParseMetronome parseMetronome;
 
-    public IncrementorController(IncrementorActivity IncrementorActivity) {
+    public PracticeSectionController(PracticeSectionActivity IncrementorActivity) {
         this.IncrementorActivity = IncrementorActivity;
-        incrementMetronome = new IncrementMetronome();
+        incrementMetronome = new PracticeSectionMetronome();
 
 
     }
 
-    public IncrementorController(MetronomeActivity MetronomeActivity){
+    public PracticeSectionController(MetronomeActivity MetronomeActivity){
 
         this.metronomeActivity = MetronomeActivity;
-        incrementMetronome = new IncrementMetronome();
+        incrementMetronome = new PracticeSectionMetronome();
 
     }
 
@@ -43,6 +45,7 @@ public class IncrementorController implements Serializable {
     public int passageLength() { return 4; }
 
     public void startMetronome() {
+
 //        if (soundGenerator != null) {
 //            soundGenerator.stop();
 //        }
@@ -60,25 +63,17 @@ public class IncrementorController implements Serializable {
 
     }
 
-    public void upMeasure() {
-        incrementMetronome.upNumBeatsInMeasure();
-        IncrementorActivity.updateMeasureView(incrementMetronome.getNumBeatsInMeasure());
-
-//        if (soundGenerator != null) {
-//            soundGenerator.stop();
-//        }
-//        soundGenerator = new SoundGenerator(metronome.getTempo(), metronome.getMeasure(), metronome.getBeep(), metronome.getFirstBeep());
-    }
-
-    public void downMeasure() {
-        incrementMetronome.downNumBeatsInMeasure();
-        IncrementorActivity.updateMeasureView(incrementMetronome.getNumBeatsInMeasure());
-
-//        if (soundGenerator != null) {
-//            soundGenerator.stop();
-//        }
-//        soundGenerator = new SoundGenerator(metronome.getTempo(), metronome.getMeasure(), metronome.getBeep(), metronome.getFirstBeep());
-    }
+//    public void upMeasure() {
+//        incrementMetronome.upNumBeatsInMeasure();
+//        IncrementorActivity.updateMeasureView(incrementMetronome.getNumBeatsInMeasure());
+//
+//    }
+//
+//    public void downMeasure() {
+//        incrementMetronome.downNumBeatsInMeasure();
+//        IncrementorActivity.updateMeasureView(incrementMetronome.getNumBeatsInMeasure());
+//
+//    }
 
     public void setNumMeasures(int numMeasures){
 
@@ -134,13 +129,13 @@ public class IncrementorController implements Serializable {
         incrementMetronome.setNumBeatsInMeasure(numBeatsInMeasure);
     }
 
-    public void setSubdivision(int subDivision){
+    public void setSubdivision(double subDivision){
 
         incrementMetronome.setSubDivision(subDivision);
 
     }
 
-    public int getSubDivision(){
+    public double getSubDivision(){
 
         return incrementMetronome.getSubDivision();
     }
@@ -156,4 +151,32 @@ public class IncrementorController implements Serializable {
         return incrementMetronome.getAccent();
 
     }
+
+    public void setTimeSignatureNumerator(int timeSignatureNumerator){
+
+        incrementMetronome.setTimeSignatureNumerator(timeSignatureNumerator);
+
+    }
+
+    public void setTimeSignatureDenominator(int timeSignatureDenominator){
+
+        incrementMetronome.setTimeSignatureDenominator(timeSignatureDenominator);
+
+    }
+
+    public int getTimeSignatureNumerator(int timeSignatureNumerator){
+
+       return incrementMetronome.getTimeSignatureNumerator();
+
+    }
+
+    public int getTimeSignatureDenominator(int timeSignatureDenominator){
+
+       return incrementMetronome.getTimeSignatureDenominator();
+
+    }
+
+
+
+
 }
